@@ -29,10 +29,18 @@
                       <span class="nav-link active">Hi, {{ auth()->user()->name }}</span>
                   </li>
                   <li class="nav-item">
-                      <form action="/logout" method="post" class="d-inline">
+                    <form method="post" id="logoutForm" action="{{ route('logout') }}">
                           @csrf
                           <button type="submit" class="btn btn-link nav-link">Logout</button>
                       </form>
+
+                      <script>
+                        function confirmLogout() {
+                            if (confirm("Are you sure you want to log out?")) {
+                                document.getElementById('logoutForm').submit();
+                            }
+                        }
+                    </script>
                   </li>
               @endguest
           </ul>

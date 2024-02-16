@@ -300,24 +300,27 @@ body {
       <th scope="col">Action</th>
     </tr>
   </thead>
-
   <tbody>
     @foreach ($kelas as $grade)
     <tr>
       <td>{{ $grade -> kelas }} </td>
+      <td>
       <form action="/dashboard/kelas/{{$grade -> id}}" method="GET" class="d-inline" >
-        <td><button class="btn btn-info">Detail</button></td>
+       <button class="btn-primary">Detail</button>
       </form>
-
+    </td>
+    <td>
       <form action="/kelas/edit/{{$grade -> id}}" method="GET" class="d-inline">
-        <td><button class="btn btn-primary">Edit</button></td>
+        <button class="btn btn-primary">Edit</button>
       </form>
-
+    </td>
+    <td>
         <form action="/kelas/delete/{{ $grade->id }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this item?');">
           @method('delete')
           @csrf
-          <td><button class="btn btn-danger">Delete</button></td>
+          <button class="btn btn-danger">Delete</button>
         </form>
+    </td>
     </tr>
     @endforeach
   </tbody>

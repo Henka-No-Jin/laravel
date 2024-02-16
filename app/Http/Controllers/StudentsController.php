@@ -24,9 +24,4 @@ class StudentsController extends Controller
         ]);
     }
 
-    public function kelas()
-    {
-        return $this->belongsTo(KelasLengkap::class, 'kelas_id');
-    }
-
 }
