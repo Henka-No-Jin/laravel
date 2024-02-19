@@ -1,6 +1,5 @@
-@extends('layouts.main')
+@extends('layouts.dashboard')
 
-@section('container')
 
     <div class="container mt-5">    
     <form method="post" action="/dashboard/add">
@@ -44,5 +43,3 @@
             }
         }
     </script>
-
-@endsection

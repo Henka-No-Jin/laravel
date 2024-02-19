@@ -73,4 +73,5 @@ Route::group(["prefix"=>"/dashboard", 'middleware' => 'auth'], function(){
     Route::post('/update/{student}', [DashboardController::class, 'update']);
     Route::get('/detail/{student}', [DashboardController::class, 'show']);
     Route::get('/kelas/{kelas}', [KelasLengkapController::class, 'dashboard']);
+    Route::get('/grade', [DashboardController::class, 'grade']);
 });

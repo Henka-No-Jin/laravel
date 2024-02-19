@@ -48,7 +48,7 @@ class KelasLengkapController extends Controller
         $result = KelasLengkap::create($validateData);
 
         if($result) {
-            return redirect('/dashboard/index')->with('success', 'Data siswa berhasil ditambahkan');
+            return redirect('/dashboard/grade')->with('success', 'Data siswa berhasil ditambahkan');
         }
     }
 
@@ -56,7 +56,7 @@ class KelasLengkapController extends Controller
         $result = KelasLengkap::destroy($kelas -> id);
 
         if($result) {
-            return redirect('/dashboard/index')->with('success', 'Data siswa berhasil dihapus');
+            return redirect('/dashboard/grade')->with('Success1', 'Data siswa berhasil dihapus');
         }
     }
 
@@ -75,7 +75,7 @@ class KelasLengkapController extends Controller
         $result = KelasLengkap::where('id', $kelas ->id)-> update($validateData);
 
         if($result) {
-            return redirect('/dashboard/index')->with('success', 'Data siswa berhasil diubah');
+            return redirect('/dashboard/grade')->with('Success1', 'Data siswa berhasil diubah');
         }
     }
 

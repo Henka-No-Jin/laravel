@@ -17,7 +17,7 @@
     <script>
         function kembali() {
             if (confirm('Apakah Anda ingin kembali?')) {
-                window.location.href = '/dashboard/index'; 
+                window.location.href = '/dashboard/grade'; 
             }
         }
     </script>

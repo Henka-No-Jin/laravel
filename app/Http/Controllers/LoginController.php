@@ -20,6 +20,8 @@ class LoginController extends Controller
     }
 
     public function index(){
+        if(Auth::check()) return redirect()->route('dashboard.index');
+
         return view ('login.index', ["title" => "Login"]);
     }
 

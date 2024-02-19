@@ -130,74 +130,27 @@ body {
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+              <a class="nav-link active" aria-current="page" href="/dashboard/index">
                 <span data-feather="home"></span>
-                Dashboard
+                Student
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/dashboard/grade">
                 <span data-feather="file"></span>
-                Orders
+                Kelas
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Customers
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Reports
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Integrations
-              </a>
-            </li>
+            
           </ul>
   
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
+            <span>Settings</span>
             <a class="link-secondary" href="#" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
             </a>
           </h6>
           <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Current month
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Last quarter
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Social engagement
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Year-end sale
-              </a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="#" onclick="confirmLogout()">
                 <span data-feather="file-text"></span>
@@ -221,10 +174,20 @@ body {
           </ul>
         </div>
       </nav>
-  
+
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 p-5">
           <a type="button" href="/dashboard/create" class="btn btn-primary" style="color: white">Add New Stundent Data</a>
-  
+          @if (session() -> has('success'))
+
+<div class="alert alert-success col-lg-12" role="alert" style="margin-top: 10px">
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+</svg>
+  {{session('success')}}
+</div>
+@endif
           <style>
             .btn-primary {
               background-color: rgb(27, 134, 15);
@@ -279,52 +242,6 @@ body {
                   @endforeach
               </tbody>
           </table>
-
-          <a type="button" href="/kelas/create"  class="btn btn-primary"  style="color: white">Add New Grade Data</a>
-
-@if (session() -> has('success'))
-<div class="alert alert-success col-lg-12" role="alert">
-  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-    <symbol id="check-circle-fill" viewBox="0 0 16 16">
-        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-    </symbol>
-</svg>
-  {{session('success')}}
-</div>
-@endif
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Kelas</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($kelas as $grade)
-    <tr>
-      <td>{{ $grade -> kelas }} </td>
-      <td>
-      <form action="/dashboard/kelas/{{$grade -> id}}" method="GET" class="d-inline" >
-       <button class="btn-primary">Detail</button>
-      </form>
-    </td>
-    <td>
-      <form action="/kelas/edit/{{$grade -> id}}" method="GET" class="d-inline">
-        <button class="btn btn-primary">Edit</button>
-      </form>
-    </td>
-    <td>
-        <form action="/kelas/delete/{{ $grade->id }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this item?');">
-          @method('delete')
-          @csrf
-          <button class="btn btn-danger">Delete</button>
-        </form>
-    </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
       </main>
     </div>
   </div>

@@ -36,6 +36,16 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function grade(){
+        $userName = User::first()->name;
+
+        return view ('/dashboard/grade', [
+            'title' => 'Kelas',
+            'userName' => $userName,
+            "kelas" => KelasLengkap::all(),
+        ]);
+    }
+
     public function store(Request $request){
         $validateData = $request->validate([
             "nis" => "required|max:255",

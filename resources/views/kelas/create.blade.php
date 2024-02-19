@@ -1,6 +1,5 @@
-@extends('layouts.main')
+@extends('layouts.dashboard')
 
-@section('container')
 
     <div class="container mt-5">    
     <form method="post" action="/kelas/add">
@@ -19,9 +18,7 @@
     <script>
         function kembali() {
             if (confirm('Apakah Anda ingin kembali?')) {
-                window.location.href = '/kelas/all'; 
+                window.location.href = '/dashboard/grade'; 
             }
         }
     </script>
-
-@endsection
